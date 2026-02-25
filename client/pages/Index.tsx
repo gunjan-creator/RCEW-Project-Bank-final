@@ -594,7 +594,7 @@ export default function Index() {
               &copy; 2024 Rajasthan College of Engineering for Women. All rights
               reserved. | Established 2002
               <br />
-              Made by Tamanna Yadav, Gunjan Singla, Gargi Kathait, Tanya Goyal
+              Made by Gunjan Singla
             </p>
           </div>
         </div>

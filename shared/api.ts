@@ -104,6 +104,7 @@ export interface ProjectResponse {
 export interface ProjectStatsResponse {
   success: boolean;
   stats: {
+    totalViews: any;
     byYear: Record<string, number>;
     byDepartment: Record<string, number>;
     byCategory: Record<string, number>;
