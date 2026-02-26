@@ -24,4 +24,12 @@ dist-ssr
 *.sw?
 
 .config/
-!.env
+.env
+.env.local
+.env.production
+client/.env.local
+client/.env.production
+
+# Keep example files
+!.env.example
+!client/.env.example

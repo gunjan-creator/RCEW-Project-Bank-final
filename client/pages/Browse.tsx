@@ -11,6 +11,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { UserProfile } from "@/components/UserProfile";
 import { Project, ProjectsResponse, ProjectStatsResponse, AvailableYearsResponse } from "@shared/api";
+import { apiFetch } from "@/lib/api";
 
 export default function Browse() {
   const { user, isAuthenticated } = useAuth();
@@ -40,7 +41,7 @@ export default function Browse() {
       if (sortBy) params.append("sortBy", sortBy);
       if (searchTerm) params.append("search", searchTerm);
 
-      const response = await fetch(`/api/projects?${params}`);
+      const response = await apiFetch(`/api/projects?${params}`);
       const data: ProjectsResponse = await response.json();
 
       if (data.success) {
@@ -66,8 +67,8 @@ export default function Browse() {
   const fetchStats = async () => {
     try {
       const [statsResponse, yearsResponse] = await Promise.all([
-        fetch('/api/projects/stats'),
-        fetch('/api/projects/years')
+        apiFetch('/api/projects/stats'),
+        apiFetch('/api/projects/years')
       ]);
 
       const statsData: ProjectStatsResponse = await statsResponse.json();
@@ -87,7 +88,7 @@ export default function Browse() {
 
   const handleViewDetails = async (projectId: string) => {
     try {
-      const response = await fetch(`/api/projects/${projectId}/view`, {
+      const response = await apiFetch(`/api/projects/${projectId}/view`, {
         method: 'POST',
       });
       const data = await response.json();

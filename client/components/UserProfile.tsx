@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User, LogOut, Upload, Camera, FileImage, Edit } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
+import { apiFetch } from "@/lib/api";
 
 export function UserProfile() {
   const { user, logout, updateUser } = useAuth();
@@ -65,7 +66,7 @@ export function UserProfile() {
 
         try {
           // Upload to backend
-          const response = await fetch("/api/auth/upload-photo", {
+          const response = await apiFetch("/api/auth/upload-photo", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -23,6 +23,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { UserProfile } from "@/components/UserProfile";
 import { Project, ProjectResponse } from "@shared/api";
+import { apiFetch } from "@/lib/api";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ export default function ProjectDetails() {
   const fetchProject = async (projectId: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/projects/${projectId}`);
+      const response = await apiFetch(`/api/projects/${projectId}`);
       const data: ProjectResponse = await response.json();
 
       if (data.success) {
@@ -69,7 +70,7 @@ export default function ProjectDetails() {
 
   const recordView = async (projectId: string) => {
     try {
-      const response = await fetch(`/api/projects/${projectId}/view`, {
+      const response = await apiFetch(`/api/projects/${projectId}/view`, {
         method: 'POST',
       });
       const data = await response.json();
@@ -87,7 +88,7 @@ export default function ProjectDetails() {
     if (!project) return;
 
     try {
-      const response = await fetch(`/api/projects/${project.id}/rate`, {
+      const response = await apiFetch(`/api/projects/${project.id}/rate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +124,7 @@ export default function ProjectDetails() {
     if (!project) return;
 
     try {
-      const response = await fetch(`/api/projects/${project.id}/faculty-validation`, {
+      const response = await apiFetch(`/api/projects/${project.id}/faculty-validation`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
