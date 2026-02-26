@@ -34,6 +34,7 @@ import { useState } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { UserProfile } from "@/components/UserProfile";
+import { apiFetch } from "@/lib/api";
 
 export default function EditProfile() {
   const { user, updateUser } = useAuth();
@@ -98,7 +99,7 @@ export default function EditProfile() {
       }
 
       // In a real app, this would be an API call to update the user
-      const response = await fetch("/api/auth/update-profile", {
+      const response = await apiFetch("/api/auth/update-profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -178,7 +179,7 @@ export default function EditProfile() {
         const base64 = reader.result as string;
 
         try {
-          const response = await fetch("/api/auth/upload-photo", {
+          const response = await apiFetch("/api/auth/upload-photo", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

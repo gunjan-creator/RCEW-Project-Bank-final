@@ -12,6 +12,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { UserProfile } from "@/components/UserProfile";
 import { CreateProjectRequest } from "@shared/api";
+import { apiFetch } from "@/lib/api";
 
 export default function Upload() {
   const navigate = useNavigate();
@@ -117,7 +118,7 @@ export default function Upload() {
         gmailId: formData.gmailId,
       };
 
-      const response = await fetch('/api/projects', {
+      const response = await apiFetch('/api/projects', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

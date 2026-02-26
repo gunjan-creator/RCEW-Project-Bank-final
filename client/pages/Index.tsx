@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Project, ProjectStatsResponse, ProjectsResponse } from "@shared/api";
+import { apiFetch } from "@/lib/api";
 
 export default function Index() {
   const [recentProjects, setRecentProjects] = useState<Project[]>([]);
@@ -39,7 +40,7 @@ export default function Index() {
 
   const fetchRecentProjects = async () => {
     try {
-      const response = await fetch("/api/projects?limit=3&sortBy=recent");
+      const response = await apiFetch("/api/projects?limit=3&sortBy=recent");
       const data: ProjectsResponse = await response.json();
       if (data.success) {
         setRecentProjects(data.projects);
@@ -51,7 +52,7 @@ export default function Index() {
 
   const fetchProjectStats = async () => {
     try {
-      const response = await fetch("/api/projects/stats");
+      const response = await apiFetch("/api/projects/stats");
       const data: ProjectStatsResponse = await response.json();
       if (data.success) {
         setStats([
