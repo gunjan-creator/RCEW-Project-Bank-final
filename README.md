@@ -21,5 +21,6 @@ Backend: Node.js + Express.js
 Database: MongoDB
 Features
 Project Discovery – Browse projects by students and departments. Upload Project – Secure submission flow for authenticated users. Authentication – Role-based access for Students and Admins. Analytics – View project stats like views, uploads, and active users. Institutional Branding – Designed specifically for RCEW.
+MADE WITH LOVE BY GUNJAN SINGLA❤️
 
 
